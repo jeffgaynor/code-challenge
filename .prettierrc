@@ -1,0 +1,17 @@
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 120,
+  "semi": true,
+  "importOrder": [
+    "^react$",
+    "<THIRD_PARTY_MODULES>",
+    "^../((?!styles).)*$",
+    "^./((?!(css|scss|styles)).)*$",
+    "\\.(css|scss)?$",
+    "^(\\.)(.*)(s|S)tyles?(\\..+)?$"
+  ],
+  "importOrderParserPlugins": ["typescript", "jsx", "classProperties"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
