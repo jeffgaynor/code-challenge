@@ -1,13 +1,12 @@
 import matter from 'gray-matter';
 import { MarkdownMeta } from '../types/markdown';
-import { getFileContents, listFiles, removeExtension } from './file';
+import { listFiles, removeExtension } from './file';
 
 export function getMarkdownMeta<T = unknown>(dir: string, file: string): MarkdownMeta<T> {
   const slug = removeExtension(file);
 
   if (file.match(/\.mdx?/)) {
-    const contents = getFileContents(dir, file);
-    const { data } = matter(contents);
+    const { data } = matter.read(`${dir}/${file}`);
 
     return { slug, ...data } as MarkdownMeta<T>;
   }

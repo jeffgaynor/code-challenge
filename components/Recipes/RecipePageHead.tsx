@@ -3,18 +3,11 @@ import styled from 'styled-components';
 import { ClockIcon } from '../../lib/icons';
 import { RecipeMeta } from '../../lib/types';
 
-const Card = styled.div`
-  background: #fff;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.24);
-  width: 520px;
-
-  @media only screen and (max-width: 680px) {
-    width: 100%;
-  }
-`;
-
-const Content = styled.article`
-  padding: 24px;
+const Root = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 const Category = styled.h2`
@@ -33,8 +26,8 @@ const Title = styled.h1`
   font-family: 'Times', serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 40px;
-  margin: 0 0 7px;
+  font-size: 64px;
+  margin: 0 0 17px;
 `;
 
 const Time = styled.h4`
@@ -44,7 +37,7 @@ const Time = styled.h4`
   font-size: 15px;
   font-variant: small-caps;
   text-transform: uppercase;
-  margin: 0;
+  margin: 40px 0 0px;
   display: flex;
   align-items: center;
 `;
@@ -54,24 +47,29 @@ const Clock = styled(ClockIcon)`
   margin-right: 8px;
 `;
 
-export type RecipeCardProps = {
+export type RecipePageHeadProps = {
   meta: RecipeMeta;
 };
 
-export const RecipeCard = ({ meta }: RecipeCardProps) => {
+export const RecipePageHead = ({ meta }: RecipePageHeadProps) => {
   const { category, title, time, image } = meta;
 
   return (
-    <Card>
-      <Image src={`/images/${image}`} alt={`${category}: ${title}`} width="520" height="232" objectFit="cover" />
-      <Content>
-        <Category>{category}</Category>
-        <Title>{title}</Title>
-        <Time>
-          <Clock />
-          {time} minutes
-        </Time>
-      </Content>
-    </Card>
+    <Root>
+      <Category>{category}</Category>
+      <Title>{title}</Title>
+      <Image
+        src={`/images/${image}`}
+        alt={`${category}: ${title}`}
+        width="532"
+        height="232"
+        layout="responsive"
+        objectFit="cover"
+      />
+      <Time>
+        <Clock />
+        {time} minutes
+      </Time>
+    </Root>
   );
 };
