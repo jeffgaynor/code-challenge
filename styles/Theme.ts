@@ -1,7 +1,20 @@
 import { createGlobalStyle, DefaultTheme } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+  }
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
 `;
 
 export const theme: DefaultTheme = {
@@ -12,6 +25,18 @@ export const theme: DefaultTheme = {
     text: {
       primary: '#37332C',
       secondary: '#37332C',
+    },
+  },
+  fonts: {
+    primary: {
+      family: `'Roboto', sans-serif`,
+      style: 'normal',
+      weight: 400,
+    },
+    secondary: {
+      family: `'Times', serif`,
+      style: 'normal',
+      weight: 400,
     },
   },
 };

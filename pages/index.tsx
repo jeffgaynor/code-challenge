@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { Page } from '../components/Layout';
 import { RecipeCard } from '../components/Recipes';
@@ -11,9 +12,13 @@ type HomePageProps = {
 
 const HomePage = ({ items }: HomePageProps) => {
   const recipes = sortByDate({ items, key: 'posted' });
+  const canonical = '/';
 
   return (
     <Page>
+      <Head>
+        <link rel="canonical" href={canonical} />
+      </Head>
       {recipes?.map((meta) => (
         <Link key={meta.slug} href={`/recipes/${meta.slug}`}>
           <a>

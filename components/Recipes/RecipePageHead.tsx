@@ -12,7 +12,7 @@ const Root = styled.div`
 
 const Category = styled.h2`
   color: ${({ theme }) => theme.colors.highlight};
-  font-family: 'Roboto', sans-serif;
+  font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
@@ -23,16 +23,20 @@ const Category = styled.h2`
 
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.text.primary};
-  font-family: 'Times', serif;
-  font-style: normal;
-  font-weight: 400;
+  font-family: ${({ theme }) => theme.fonts.secondary.family};
+  font-style: ${({ theme }) => theme.fonts.secondary.style};
+  font-weight: ${({ theme }) => theme.fonts.secondary.weight};
+  line-height: 1;
   font-size: 64px;
   margin: 0 0 17px;
+  @media only screen and (max-width: 768px) {
+    font-size: 48px;
+  }
 `;
 
 const Time = styled.h4`
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
+  font-family: ${({ theme }) => theme.fonts.primary.family};
+  font-style: ${({ theme }) => theme.fonts.primary.style};
   font-weight: 300;
   font-size: 15px;
   font-variant: small-caps;
@@ -61,9 +65,9 @@ export const RecipePageHead = ({ meta }: RecipePageHeadProps) => {
       <Image
         src={`/images/${image}`}
         alt={`${category}: ${title}`}
-        width="532"
-        height="232"
-        layout="responsive"
+        width="1040"
+        height="464"
+        // layout="responsive"
         objectFit="cover"
       />
       <Time>

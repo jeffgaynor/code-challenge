@@ -7,22 +7,23 @@ const Root = styled.footer(({ theme }) => ({
   height: 80,
   display: 'flex',
   padding: '20px 80px',
-  '@media only screen and (max-width: 680px)': {
+  '@media only screen and (max-width: 768px)': {
     padding: 24,
+    height: 48,
   },
 }));
 
 const Container = styled.div`
+  font-family: ${({ theme }) => theme.fonts.primary.family};
+  font-style: ${({ theme }) => theme.fonts.primary.style};
+  font-weight: ${({ theme }) => theme.fonts.primary.weight};
+  font-size: 14px;
   height: 32px;
   display: flex;
   flex: 1;
   justify-content: space-between;
   align-self: center;
   align-items: center;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
 `;
 
 export const Footer = () => {

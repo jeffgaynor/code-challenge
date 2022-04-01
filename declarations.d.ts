@@ -1,16 +1,25 @@
-// styled.d.ts
 import 'styled-components';
+
+export type Colors = {
+  primary: string;
+  secondary: string;
+  highlight?: string;
+};
+
+export type Font = {
+  family: string;
+  style: string;
+  weight: number;
+};
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    colors: {
-      primary: string;
-      secondary: string;
-      highlight: string;
-      text: {
-        primary: string;
-        secondary: string;
-      };
+    colors: Colors & {
+      text: Colors;
+    };
+    fonts: {
+      primary: Font;
+      secondary: Font;
     };
   }
 }
