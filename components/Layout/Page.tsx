@@ -19,7 +19,7 @@ export const Body = styled.main`
   }
 `;
 
-export const Content = styled.section`
+export const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   background: #fff;

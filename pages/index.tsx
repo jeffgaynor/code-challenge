@@ -5,11 +5,11 @@ import { RecipeMeta } from '../lib/types';
 import { sortByDate } from '../lib/utils/array';
 import { listMarkdownMeta } from '../lib/utils/markdown';
 
-type RecipesPageProps = {
+type HomePageProps = {
   items: RecipeMeta[];
 };
 
-const RecipesPage = ({ items }: RecipesPageProps) => {
+const HomePage = ({ items }: HomePageProps) => {
   const recipes = sortByDate({ items, key: 'posted' });
 
   return (
@@ -27,8 +27,8 @@ const RecipesPage = ({ items }: RecipesPageProps) => {
 
 export const getStaticProps = async () => ({
   props: {
-    items: listMarkdownMeta('./pages/recipes'),
+    items: listMarkdownMeta('_recipes'),
   },
 });
 
-export default RecipesPage;
+export default HomePage;
