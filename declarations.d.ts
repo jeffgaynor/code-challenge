@@ -23,3 +23,6 @@ declare module 'styled-components' {
     };
   }
 }
+
+// additional.d.ts
+/// <reference types="next-images" />

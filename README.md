@@ -10,6 +10,20 @@ Node v14+
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+#### Cloning
+
+This repository leverages [Git submodules](https://www.vogella.com/tutorials/GitSubmodules/article.html#:~:text=2.3.-,Pulling%20with%20submodules,in%20the%20git%20pull%20command%20) to supply markdown and images for recipes. To ensure submodules are retreived when cloning, checkout with:
+
+```bash
+git clone --recurse-submodules https://github.com/jeffgaynor/code-challenge.git
+```
+
+To pull in the latest changes, use:
+
+```
+git pull --recurse-submodules
+```
+
 To run the development server:
 
 ```bash
@@ -31,8 +45,8 @@ To build recipes pages and cards on the home page, added meta data to the markdo
 category: Appetizers
 title: Buffalo Wings
 image: buffalo-wings.png
+published: Monday, 28 Mar 2022 00:00:0 GMT
 time: 45
-posted: Monday, 28 Mar 2022 00:00:0 GMT
 ---
 ```
 
