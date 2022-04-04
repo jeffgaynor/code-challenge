@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Footer } from './Footer';
@@ -42,12 +41,6 @@ export type PageProps = {
 export const Page = ({ children }: PageProps) => {
   return (
     <Layout>
-      <Head>
-        <title>The Best Recipes - Yummy Recipes!</title>
-        <meta name="description" content="These are yummy recipes." />
-        <meta name="keywords" content="food,appetizers,desserts,drinks" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Header />
       <Body>
         <Content>{children}</Content>

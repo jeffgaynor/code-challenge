@@ -1,16 +1,15 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 import { ClockIcon } from '../../lib/icons';
-import { RecipeMeta } from '../../lib/types';
 
-const Root = styled.div`
+export const Root = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   flex: 1;
+  max-width: 1040px;
 `;
 
-const Category = styled.h2`
+export const Category = styled.h2`
   color: ${({ theme }) => theme.colors.highlight};
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: 700;
@@ -21,7 +20,7 @@ const Category = styled.h2`
   margin: 0 0 9px;
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.text.primary};
   font-family: ${({ theme }) => theme.fonts.secondary.family};
   font-style: ${({ theme }) => theme.fonts.secondary.style};
@@ -34,7 +33,7 @@ const Title = styled.h1`
   }
 `;
 
-const Time = styled.h4`
+export const Time = styled.h4`
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-style: ${({ theme }) => theme.fonts.primary.style};
   font-weight: 300;
@@ -46,34 +45,7 @@ const Time = styled.h4`
   align-items: center;
 `;
 
-const Clock = styled(ClockIcon)`
+export const Clock = styled(ClockIcon)`
   color: ${({ theme }) => theme.colors.primary};
   margin-right: 8px;
 `;
-
-export type RecipePageHeadProps = {
-  meta: RecipeMeta;
-};
-
-export const RecipePageHead = ({ meta }: RecipePageHeadProps) => {
-  const { category, title, time, image } = meta;
-
-  return (
-    <Root>
-      <Category>{category}</Category>
-      <Title>{title}</Title>
-      <Image
-        src={`/images/${image}`}
-        alt={`${category}: ${title}`}
-        width="1040"
-        height="464"
-        // layout="responsive"
-        objectFit="cover"
-      />
-      <Time>
-        <Clock />
-        {time} minutes
-      </Time>
-    </Root>
-  );
-};

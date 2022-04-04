@@ -1,8 +1,7 @@
-import Head from 'next/head';
 import Link from 'next/link';
-import { Page } from '../components/Layout';
-import { RecipeCard } from '../components/Recipes';
-import { RecipeMeta } from '../lib/types';
+import { HeadMeta, Page } from '../components/Layout';
+import { RecipeCard } from '../components/RecipeCard';
+import { Meta, RecipeMeta } from '../lib/types';
 import { sortByDate } from '../lib/utils/array';
 import { listMarkdownMeta } from '../lib/utils/markdown';
 
@@ -12,13 +11,10 @@ type HomePageProps = {
 
 const HomePage = ({ items }: HomePageProps) => {
   const recipes = sortByDate({ items, key: 'posted' });
-  const canonical = '/';
 
   return (
     <Page>
-      <Head>
-        <link rel="canonical" href={canonical} />
-      </Head>
+      <HeadMeta meta={{ url: '/', type: 'website' } as Meta} />
       {recipes?.map((meta) => (
         <Link key={meta.slug} href={`/recipes/${meta.slug}`}>
           <a>
@@ -30,9 +26,9 @@ const HomePage = ({ items }: HomePageProps) => {
   );
 };
 
-export const getStaticProps = async () => ({
+export const getServerSideProps = async () => ({
   props: {
-    items: listMarkdownMeta('_recipes'),
+    items: listMarkdownMeta('_recipes/markdown'),
   },
 });
 

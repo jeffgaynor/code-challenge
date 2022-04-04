@@ -1,9 +1,7 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 import { ClockIcon } from '../../lib/icons';
-import { RecipeMeta } from '../../lib/types';
 
-const Card = styled.div`
+export const Card = styled.div`
   background: #fff;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.24);
   width: 520px;
@@ -19,11 +17,11 @@ const Card = styled.div`
   }
 `;
 
-const Content = styled.article`
+export const Content = styled.article`
   padding: 24px;
 `;
 
-const Category = styled.h2`
+export const Category = styled.h2`
   color: ${({ theme }) => theme.colors.highlight};
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-weight: 700;
@@ -34,7 +32,7 @@ const Category = styled.h2`
   margin: 0 0 9px;
 `;
 
-const Title = styled.h1`
+export const Title = styled.h1`
   color: ${({ theme }) => theme.colors.text.primary};
   font-family: ${({ theme }) => theme.fonts.secondary.family};
   font-style: ${({ theme }) => theme.fonts.secondary.style};
@@ -53,7 +51,7 @@ const Title = styled.h1`
   }
 `;
 
-const Time = styled.h4`
+export const Time = styled.h4`
   font-family: ${({ theme }) => theme.fonts.primary.family};
   font-style: ${({ theme }) => theme.fonts.primary.style};
   font-weight: 300;
@@ -65,29 +63,7 @@ const Time = styled.h4`
   align-items: center;
 `;
 
-const Clock = styled(ClockIcon)`
+export const Clock = styled(ClockIcon)`
   color: ${({ theme }) => theme.colors.primary};
   margin-right: 8px;
 `;
-
-export type RecipeCardProps = {
-  meta: RecipeMeta;
-};
-
-export const RecipeCard = ({ meta }: RecipeCardProps) => {
-  const { category, title, time, image } = meta;
-
-  return (
-    <Card>
-      <Image src={`/images/${image}`} alt={`${category}: ${title}`} width="1040" height="464" objectFit="cover" />
-      <Content>
-        <Category>{category}</Category>
-        <Title>{title}</Title>
-        <Time>
-          <Clock />
-          {time} minutes
-        </Time>
-      </Content>
-    </Card>
-  );
-};

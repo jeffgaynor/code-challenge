@@ -31,8 +31,8 @@ To build recipes pages and cards on the home page, added meta data to the markdo
 category: Appetizers
 title: Buffalo Wings
 image: buffalo-wings.png
+published: Monday, 28 Mar 2022 00:00:0 GMT
 time: 45
-posted: Monday, 28 Mar 2022 00:00:0 GMT
 ---
 ```
 
