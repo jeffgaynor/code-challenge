@@ -56,4 +56,4 @@ Add styles to the recipe pages with by using the following format:
 
 ### Images
 
-All images should currently be placed in the `public/images` folder, at a default size of width 530px x height 232px;
+All images should currently be placed in the `public/images` folder, at a default size of 1040px width X 464px height;

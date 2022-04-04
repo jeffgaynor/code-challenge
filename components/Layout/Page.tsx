@@ -14,8 +14,12 @@ const Layout = styled.div`
 export const Body = styled.main`
   display: flex;
   flex: 1;
-  @media only screen and (max-width: 680px) {
-    flex-direction: column-reverse;
+  justify-content: space-between;
+  padding: 48px 80px 48px 80px;
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 24px 24px 24px;
   }
 `;
 
@@ -24,9 +28,10 @@ export const Content = styled.div`
   flex-wrap: wrap;
   background: #fff;
   gap: 40px;
-  padding: 48px 40px 48px 80px;
-  @media only screen and (max-width: 680px) {
-    padding: 24px;
+  padding-right: 40px;
+  @media only screen and (max-width: 768px) {
+    justify-content: center;
+    padding-right: 0;
   }
 `;
 

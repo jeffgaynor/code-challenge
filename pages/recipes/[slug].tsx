@@ -1,6 +1,8 @@
 import fs from 'fs';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Page, RecipePageHead } from '../../components';
@@ -9,20 +11,25 @@ import { listFiles, removeExtension } from '../../lib/utils/file';
 
 const Content = styled.article`
   display: flex;
-  max-width: 1040px;
   flex-direction: column;
-  margin-top: -25px;
   font-family: 'Roboto', sans-serif;
   color: ${({ theme }) => theme.colors.text.primary};
+  margin-top: -32px;
+  @media only screen and (max-width: 768px) {
+    margin-top: -20px;
+  }
 `;
 
 const Heading = styled.h2`
   color: ${({ theme }) => theme.colors.text.primary};
   font-family: 'Times', serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 48px;
   margin: 24px 0 10px;
+  @media only screen and (max-width: 768px) {
+    font-size: 38px;
+  }
 `;
 
 const Paragaph = styled.p`
@@ -70,6 +77,9 @@ const Step = styled.h4`
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.text.primary};
   margin: 0 0 -10px;
+  @media only screen and (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const Subtitle = styled.h5`
@@ -87,6 +97,11 @@ type RecipePageProps = {
 };
 
 const RecipePage = ({ source }: RecipePageProps) => {
+  const router = useRouter();
+  const canonical = router.asPath;
+  const meta = source.frontmatter as unknown as RecipeMeta;
+  const { title, category } = meta;
+  const seoTitle = `${title && `${title} - `} ${category && `${category} - `} - Yummy Recipes!`;
   const components = {
     h2: Heading,
     p: Paragaph,
@@ -98,8 +113,12 @@ const RecipePage = ({ source }: RecipePageProps) => {
 
   return (
     <Page>
+      <Head>
+        <title>{seoTitle}</title>
+        <link rel="canonical" href={canonical} />
+      </Head>
       <Content>
-        <RecipePageHead meta={source.frontmatter as unknown as RecipeMeta} />
+        <RecipePageHead meta={meta} />
         <MDXRemote {...source} components={components as any} />
       </Content>
     </Page>

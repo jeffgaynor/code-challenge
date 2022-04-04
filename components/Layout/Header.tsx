@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Logo } from './Logo';
-import { Nav } from './Nav';
+import { Nav } from './Nav/Nav';
 
 const Root = styled.header(({ theme }) => ({
   color: theme.colors.primary,
@@ -10,12 +10,14 @@ const Root = styled.header(({ theme }) => ({
   display: 'flex',
   height: 112,
   padding: '20px 80px',
-  '@media only screen and (max-width: 680px)': {
+  '@media only screen and (max-width: 768px)': {
     padding: 24,
+    height: 72,
   },
 }));
 
 const Container = styled.div`
+  z-index: 20;
   display: flex;
   flex: 1;
   justify-content: space-between;

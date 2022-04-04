@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Title = styled.h3`
   color: ${({ theme }) => theme.colors.primary};
-  font-family: 'Roboto';
-  font-style: normal;
+  font-family: ${({ theme }) => theme.fonts.primary.family};
+  font-style: ${({ theme }) => theme.fonts.primary.style};
   font-weight: 700;
   font-size: 16px;
   font-variant: small-caps;
@@ -12,14 +12,14 @@ const Title = styled.h3`
   padding-bottom: 8px;
   border-bottom: 1px solid #e5e5e5;
   margin: 0;
+  align-self: flex-end;
 `;
 
 const Root = styled.nav`
-  min-width: 216px;
-  padding: 40px 24px;
-
-  @media only screen and (max-width: 680px) {
-    padding: 24px 24px 0 24px;
+  min-width: 200px;
+  @media only screen and (max-width: 768px) {
+    padding: 0;
+    margin-top: 40px;
   }
 
   ul {
@@ -29,14 +29,17 @@ const Root = styled.nav`
   }
 
   li {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
+    font-family: ${({ theme }) => theme.fonts.primary.family};
+    font-style: ${({ theme }) => theme.fonts.primary.style};
+    font-weight: ${({ theme }) => theme.fonts.primary.weight};
     font-size: 16px;
     line-height: 32px;
     margin: 0;
     padding: 0;
     color: ${({ theme }) => theme.colors.text.primary};
+  }
+  li:hover {
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
